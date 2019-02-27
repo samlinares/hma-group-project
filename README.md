@@ -1,16 +1,17 @@
-##Umbra Home Monitoring System
+# Umbra Home Monitoring System
 
 `V0.1`
-- Sensors Working:
--- Temperature
--- Light
 
-- Accessories Working:
--- Bluetooth
+`Sensors Working:`
+* Temperature
+* Light
 
-##To Do
+`Accessories Working:`
+* Bluetooth
+
+### To Do
 
 `Sensors:`
-- Motion
-- Microphone
-- Gas
+* Motion
+* Microphone
+* Gas
