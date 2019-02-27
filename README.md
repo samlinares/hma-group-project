@@ -1,2 +1,16 @@
-# hma-group-project
-Home Monitoring Arduino - Fanshawe 2019 IMS Project
+##Umbra Home Monitoring System
+
+`V0.1`
+- Sensors Working:
+-- Temperature
+-- Light
+
+- Accessories Working:
+-- Bluetooth
+
+##To Do
+
+`Sensors:`
+- Motion
+- Microphone
+- Gas
