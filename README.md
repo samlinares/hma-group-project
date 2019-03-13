@@ -1,10 +1,11 @@
 # Umbra Home Monitoring System
 
-`V0.1`
+`V0.2`
 
 `Sensors Working:`
 * Temperature
 * Light
+* Motion
 
 `Accessories Working:`
 * Bluetooth
@@ -12,6 +13,5 @@
 ### To Do
 
 `Sensors:`
-* Motion
 * Microphone
 * Gas

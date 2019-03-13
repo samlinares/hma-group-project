@@ -68,31 +68,31 @@ board.on("ready", function() {
 
 
 
- //    var motion = new five.Motion(7);
+    var motion = new five.Motion(7);
 
-	// // "calibrated" occurs once, at the beginning of a session,
-	// motion.on("calibrated", function() {
-	// 	motionDiv.innerHTML = "calibrated";
-	// });
+	// "calibrated" occurs once, at the beginning of a session,
+	motion.on("calibrated", function() {
+		motionDiv.innerHTML = "calibrated";
+	});
 
-	// // "motionstart" events are fired when the "calibrated"
-	// // proximal area is disrupted, generally by some form of movement
-	// motion.on("motionstart", function() {
-	// 	motionDiv.innerHTML = "motionstart";
-	// });
+	// "motionstart" events are fired when the "calibrated"
+	// proximal area is disrupted, generally by some form of movement
+	motion.on("motionstart", function() {
+		motionDiv.innerHTML = "Motion Detected!";
+	});
 
-	// // "motionend" events are fired following a "motionstart" event
-	// // when no movement has occurred in X ms
-	// motion.on("motionend", function() {
-	// 	motionDiv.innerHTML = "motionend";
-	// });
+	// "motionend" events are fired following a "motionstart" event
+	// when no movement has occurred in X ms
+	motion.on("motionend", function() {
+		motionDiv.innerHTML = "Motion Ended";
+	});
 
-	//   // "data" events are fired at the interval set in opts.freq
-	//   // or every 25ms. Uncomment the following to see all
-	//   // motion detection readings.
-	//   // motion.on("data", function(data) {
-	//   //   console.log(data);
-	//   // });
+	  // "data" events are fired at the interval set in opts.freq
+	  // or every 25ms. Uncomment the following to see all
+	  // motion detection readings.
+	  // motion.on("data", function(data) {
+	  //   console.log(data);
+	  // });
 
 	// var mic = new five.Sensor("A0");
 	// var led = new five.Led(13);
