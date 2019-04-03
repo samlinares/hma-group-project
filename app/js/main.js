@@ -20,9 +20,11 @@ process.__defineGetter__('stdin', function() {
 
 //Bluetooth Board
 //Run this command in terminal to get the serial port: 'ls -l /dev/tty.*'
-var board = new five.Board({
-	port: "/dev/tty.Umbra_SS_V01-DevB"
-});
+var board = new five.Board(
+//{
+	//port: "/dev/tty.Umbra_SS_V01-DevB"
+//}
+);
 
 var tempDiv = document.querySelector("#tempValue");
 var lightDiv = document.querySelector("#lightValue");
@@ -44,6 +46,7 @@ board.on("ready", function() {
 	motionDiv.innerHTML = "motion";
 	soundDiv.innerHTML = "sound";
 
+/*TEMPERATURE*/
 	var temperature = new five.Thermometer({
     	controller: "LM35",
     	pin: "A0",
@@ -54,7 +57,8 @@ board.on("ready", function() {
     	tempDiv.innerHTML = this.celsius + "°"; 
   	});
 
-  	var photoresistor = new five.Sensor({
+/*LIGHT*/
+  var photoresistor = new five.Sensor({
     	pin: "A1",
     	freq: 500
 	});
@@ -65,14 +69,12 @@ board.on("ready", function() {
       	lightDiv.innerHTML = remap(sensorInfo) + "<span> lm</span>";
     });
 
-
-
-
-    var motion = new five.Motion(7);
+/*MOTION*/
+  	var motion = new five.Motion(7);
 
 	// "calibrated" occurs once, at the beginning of a session,
 	motion.on("calibrated", function() {
-		motionDiv.innerHTML = "calibrated";
+		motionDiv.innerHTML = "Calibrated";
 	});
 
 	// "motionstart" events are fired when the "calibrated"
@@ -87,19 +89,58 @@ board.on("ready", function() {
 		motionDiv.innerHTML = "Motion Ended";
 	});
 
-	  // "data" events are fired at the interval set in opts.freq
-	  // or every 25ms. Uncomment the following to see all
-	  // motion detection readings.
-	  // motion.on("data", function(data) {
-	  //   console.log(data);
-	  // });
+/*GAS*/
+	var gas = new five.Sensor({
+		pin: "A5",
+		freq: 500
+	});
 
-	// var mic = new five.Sensor("A0");
-	// var led = new five.Led(13);
+	gas.on("change", function() {
+		var gasInfo = this.scaleTo(1, 10);
+		gasDiv.innerHTML = gasInfo + "<span> ppm </span>";
 
-	// mic.on("data", function() {
-	// 	led.brightness(this.value >> 2);
-	// });
+		var piezo = new five.Piezo(10);
+		if (gasInfo > 4) {
+			piezo.play({
+    				song: [
+							["C4", 1 / 4],
+   							["D4", 1 / 4],
+   							["F4", 1 / 4],
+   							["D4", 1 / 4],
+   							["A4", 1 / 4],
+   							[null, 1 / 4],
+   							["A4", 1],
+   							["G4", 1],
+   							[null, 1 / 2],
+   							["C4", 1 / 4],
+   							["D4", 1 / 4],
+   							["F4", 1 / 4],
+   							["D4", 1 / 4],
+   							["G4", 1 / 4],
+   							[null, 1 / 4],
+   							["G4", 1],
+   							["F4", 1],
+   							[null, 1 / 2]
+    					],
+    						tempo: 100
+  					});
+		}
+	});
 
+/*MICROPHONE*/
+  var mic = new five.Sensor({
+  	pin: "A2",
+  	freq: 100
+  });
+  var led = new five.Led(12);
 
-});
+  mic.on("data", function() {
+  	var micInfo = this.scaleTo(1, 10);
+  	console.log(micInfo);
+    soundDiv.innerHTML = micInfo;
+    if (micInfo >> 4){
+    soundDiv.innerHTML = "Noise Detected!"}
+    //led.blink(500);}
+
+  });
+  });
