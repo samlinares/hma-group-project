@@ -17,3 +17,11 @@ Back-end currently working as intended. Need to merge with the front-end.
 `Sensors:`
 * Microphone
 
+
+# Mobile frontend nearly completed.
+
+### To DO
+* Integration with electron
+
+
+
