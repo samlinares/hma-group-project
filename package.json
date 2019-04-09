@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "electron-prebuilt": "^0.36.7",
-    "johnny-five": "^0.9.23"
+    "johnny-five": "^0.9.23",
+    "twilio": "^3.30.0"
   }
 }

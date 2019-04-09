@@ -1,6 +1,11 @@
 var Readable = require('stream').Readable  
 var util = require('util')  
 var five = require('johnny-five')
+var twilio = require('twilio'); 
+ 
+var accountSid = 'ACdf24a9fcaf53cdd9ce12b72e02cc398d'; // Your Account SID from www.twilio.com/console
+var authToken = 'c0aefec563b59bf563c0058f6dfccb55';   // Your Auth Token from www.twilio.com/console
+var client = new twilio(accountSid, authToken);
 
 util.inherits(MyStream, Readable)  
 function MyStream(opt) {  
@@ -96,6 +101,12 @@ board.on("ready", function() {
 	motion.on("motionstart", function() {
 		motionDiv.innerHTML = "ON";
     motionLabel.innerHTML = "MOTION DETECTED!";
+    client.messages.create({
+    body: 'Motion detected near front door.',
+    to: '+15196575853',  // Juliana's #
+    from: '+12262125001' // From a Juliana's valid Twilio number
+})
+.then((message) => console.log(message.sid));
 	});
 
 	// "motionend" events are fired following a "motionstart" event
