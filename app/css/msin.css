@@ -26,6 +26,14 @@ body {
   height: 100%;
   overflow-x: hidden; }
 
+body.light-mode {
+  background-color: #ffffff;
+  color: #1D1E28; }
+  body.light-mode a {
+    color: #1D1E28; }
+  body.light-mode a:hover {
+    color: #9ECBAA; }
+
 body.dark-mode {
   background-color: #1D1E28;
   color: #ffffff; }
@@ -33,12 +41,6 @@ body.dark-mode {
     color: #ffffff; }
   body.dark-mode a:hover {
     color: #9ECBAA; }
-
-body.light-mode {
-  background-color: #ffffff;
-  color: #1D1E28; }
-  body.light-mode a {
-    color: #1D1E28; }
 
 a {
   text-decoration: none;
@@ -48,7 +50,7 @@ a {
 #menuToggle {
   display: inline;
   position: absolute;
-  top: 21px;
+  top: 16px;
   right: 20px;
   z-index: 1;
   -webkit-user-select: none;
@@ -134,12 +136,6 @@ a {
 #menu li {
   padding: 10px 0;
   font-size: 22px; }
-
-#menu li a {
-  color: #1D1E28 !important; }
-
-#menu li a:hover {
-  color: #9ECBAA !important; }
 
 /*
  * And let's fade it in from the left
@@ -255,18 +251,19 @@ input {
   margin-top: 30px;
   margin-left: 100px; }
 
-.topBar {
-  padding: 15px 0; }
-
-.pageTitle {
+#overview {
+  font-family: 'EB Garamond', serif;
+  font-weight: lighter;
+  /*color:white ; */
   font-size: 20px;
-  margin-left: 20px;
+  margin-left: 15px;
   display: inline-block; }
 
 #min_logo {
   float: right;
-  margin-right: 210px;
-  width: 8%; }
+  margin-top: 15px;
+  margin-right: 175px;
+  width: 5%; }
 
 #switch {
   visibility: hidden;
@@ -282,8 +279,7 @@ input {
   border-radius: 50px;
   position: relative;
   cursor: pointer;
-  transition: 0.5s all ease;
-  margin-left: 70px; }
+  transition: 0.5s all ease; }
 
 .switch-label .toggle {
   width: 25px;
@@ -322,8 +318,7 @@ input {
   width: 7%; }
 
 .top_info {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
   display: flex;
   flex-flow: row nowrap; }
 
@@ -363,7 +358,8 @@ input {
   /*color: white;*/
   text-align: center;
   font-size: 17px;
-  margin: 30px 0 30px; }
+  margin-top: 10px;
+  margin-left: 35px; }
 
 .temperature_overview, .light_overview, .gas_overview, .security_overview {
   display: block;
@@ -388,16 +384,13 @@ input {
   display: inline-block;
   float: right; }
 
-.overview_details {
-  margin: 50px 0 100px; }
-
 .bottom_nav {
   margin-top: 0px;
   display: flex;
   flex-flow: row nowrap; }
 
 #More, #Timeline, #Home {
-  width: 8%;
+  width: 7%;
   display: flex;
   flex-flow: column nowrap;
   display: inline-flex;
@@ -405,10 +398,10 @@ input {
   margin-top: 25px; }
 
 #More {
-  margin-left: 135px; }
+  margin-left: 125px; }
 
 #Timeline {
-  margin-left: 145px; }
+  margin-left: 125px; }
 
 #Home {
   margin-left: 25px; }
@@ -464,18 +457,22 @@ input {
   float: right;
   padding: 20px; }
 
-#weatherInfo {
-  text-align: center; }
-
-#weatherTemp {
+.weather h2 {
+  font-family: 'EB Garamond', serif;
+  font-weight: 10;
+  /*color: white; */
   text-align: center;
-  font-weight: 300; }
+  font-size: 20px;
+  text-align: center;
+  margin-left: 30px;
+  margin-bottom: 20px; }
 
-#weatherText {
-  text-align: center; }
+.weather img {
+  margin-left: 205px;
+  width: 6%; }
 
 .details {
-  margin-top: 80px; }
+  margin-top: 60px; }
 
 .sensorLabel {
   font-family: 'EB Garamond', serif;
@@ -491,7 +488,7 @@ input {
   margin: 0 auto;
   display: flex;
   flex-flow: row nowrap;
-  margin-bottom: 100px; }
+  margin-bottom: 22px; }
 
 #detailsNav a {
   overflow: hidden;
@@ -645,7 +642,7 @@ input {
   width: 87%;
   height: 50px;
   border: 1px solid #9ECBAA;
-  margin-bottom: 120px;
+  margin-bottom: 25px;
   margin-left: 25px;
   text-align: center; }
 
@@ -700,4 +697,4 @@ input {
   text-align: center;
   color: #9ECBAA; }
 
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=msin.css.map */

@@ -1,38 +1,27 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Template</title>
-<link href="css/main.css" rel="stylesheet" type="text/css">
+	<title> Umbra Security System</title>
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0, width=device-width">
+	<link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,700" rel="stylesheet">
+	<!-- <script>document.getElementsByTagName("html")[0].className += " js";</script> -->
 </head>
+<body> 
 
-<body>
-	<div class="readingContainer">
-		<h2>Temperature: </h2>
-		<h3 id="tempValue">0</h3>
-	</div>
+<div class="signin">
+	 <img id="logo" src="assets/logo.svg" alt=logo>
+	<h2 id="tagline"> For the love of security</h2>
 
-	<div class="readingContainer">
-		<h2>Light: </h2>
-		<h3 id="lightValue">0</h3>
-	</div>
-
-	<div class="readingContainer">
-		<h2>Gas: </h2>
-		<h3 id="gasValue">0</h3>
-	</div>
-
-	<div class="readingContainer">
-		<h2>Motion: </h2>
-		<h3 id="motionValue">0</h3>
-	</div>
-
-	<div class="readingContainer">
-		<h2>Sound: </h2>
-		<h3 id="soundValue">0</h3>
-	</div>
-
-<script src="js/main.js"></script>
+	<form>
+		<h2 id= "account"> Don't have an account?    |    </h2>
+		<h2 id ="Register">Register</h2>
+		<input type="text" placeholder="Username">
+		<input type="text" placeholder="Password">
+		<input type="button" onclick="window.location.href ='overview.html';" class="btn" value="LOG IN">
+	</form>
+	<h2 id="forgetPassword"> Forgot password?</h2>
+</div>
 </body>
 </html>
-
