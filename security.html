@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Umbra Security System - Security</title>
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="initial-scale=1.0, width=device-width">
+	<link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,700" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+        	
+</head>
+<body id="body" class ="dark-mode"> 
+	<div class="topBar">
+		<h2 class="pageTitle" id="overview">Security</h2>
+		<img id="min_logo" src="images/logo.png" alt='Umbra Logo'>
+		<nav>
+			<div id="menuToggle">
+
+	  		<input type="checkbox" />
+	  	 
+	  			<span></span>
+	    		<span></span>
+	    		<span></span>
+
+	  	   		<ul id="menu">
+	    			<li><a href="overview.html">Home</a></li>
+	    			<li><a href="About.html">About</a></li>
+	    			<li><a href="settings.html">Settings</a></li>
+	    			<li><a href="login2.html">Log Out</a></li>  
+	    		</ul>
+	  		</div>
+		</nav>
+		<div id="line"></div>
+	</div>
+	<div class="top_info">
+		<input type="checkbox" onclick="toggleDarkLight()" id= "switch">
+		<label for="switch" class="switch-label">
+			<span class="toggle"></span>
+		</label>
+
+		<div class="address">
+			<img id="address_image" src="assets/address.svg" alt=address>
+			<p id="address_text">London, ON</p>
+		</div>
+	</div>
+
+	<div class="weather">
+		<h3 id="weatherInfo">Current Weather</h3>
+		<h3 id="weatherTemp"></h3>
+		<h2 id="weatherText"></h2>
+	</div>
+ 
+	<div class="details" id="motion">        
+        <div class="sensorData">
+        	<a href ="light_details.html"><img class="playback" id="sec_light" src="assets/playback.svg" alt=next></a>
+            <h2 class="animated slideInDown" id="motionValue">...</h2>
+            <img class="play" id="sec_nun" src="assets/playbackzero.svg" alt=back>
+        </div>
+        <h3 id="motionLabel" class="sensorLabel">...</h3>           
+    </div>   
+
+	<div id="detailsNav">
+		<a><span></span></a>
+	    <a><span></span></a>
+	    <a><span></span></a>
+	    <a><span class="active"></span></a>
+	</div>
+
+	<div class="buttom_nav">
+		<a class ="nav" href="overview.html" id="Home">
+			<img class="clip" src="assets/home.svg" alt=home>
+			<h3 id="active_tab">Overview</h3>
+		</a>
+		<a class="nav" href="timeline.html" id="Timeline">
+			<img class="clip" src="assets/timeline.svg" alt=timeline>
+			<h3>Timeline</h3>
+		</a>
+		<a class="nav" href="scenes.html" id="More">
+			<img class="nav" id="more_image" src="assets/scenes.svg" alt=scenes>
+			<h3>Scenes</h3>
+		</a>
+	</div>
+
+	<h2 class="hidden" id="tempValue"></h2>
+	<h2 class="hidden" id="gasValue"></h2>
+	<h2 class="hidden" id="lightValue"></h2>
+	
+
+	<h3 class="hidden" id="tempLabel"></h3>
+	<h3 class="hidden" id="gasLabel"></h3>
+	<h3 class="hidden" id="lightLabel"></h3>
+
+	<script src="js/script.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>

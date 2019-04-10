@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Umbra Security System</title>
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="initial-scale=1.0, width=device-width">
+	<link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,700" rel="stylesheet">
+</head>
+<section class="body">
+<body id="body" class ="dark-mode"> 
+
+	<div class="topBar">
+
+	<h2 class="pageTitle" id="overview">Overview</h2>
+	<img class="min_logo" src="images/logo.png" alt='Umbra Logo'>
+</div>
+
+		<div id="line"></div>
+	</div>
+	<div class="top_info">
+		<input type="checkbox" onclick="toggleDarkLight()" id= "switch">
+		<label for="switch" class="switch-label">
+			<span class="toggle"></span>
+		</label>
+
+		<div class="address">
+			<img id="address_image" src="assets/address.svg" alt=address>
+			<p id="address_text">London, ON</p>
+		</div>
+	</div>
+
+	<section id="navigation">
+		<nav>
+
+			<div id="menuToggle">
+
+	  		<input type="checkbox" />
+	  	 
+	  			<span></span>
+	    		<span></span>
+	    		<span></span>
+
+	  	   		<ul id="menu">
+	    			<li><a href="overview.html">Home</a></li>
+	    			<li><a href="About.html">About</a></li>
+	    			<li><a href="settings.html">Settings</a></li>
+	    			<li><a href="login2.html">Log Out</a></li>  
+	    		</ul>
+	  		</div>
+		</nav>
+	</section>
+
+
+	<p class= "greetings"> Hi Jacob,
+		<br id="text_break"></br>
+		Tip: We can inform you more if you turn on light sensors before sleeping.
+	</p>
+
+	<div class="overview_details">
+
+	<a href="temp_details.html">
+		<div class="temperature_overview">
+			<h2>Temperature</h2>
+			<h3 id="tempValue">Loading...</h3>
+		</div>
+	</a>
+
+	<a href="gas_details.html">
+		<div class="gas_overview">
+			<h2>Gas</h2>
+			<h3 id="gasValue">Loading...</h3>
+		</div>
+	</a>
+
+	<a href="light_details.html">
+		<div class="light_overview">
+			<h2>Lights</h2>
+			<h3 id="lightValue">Loading...</h3>
+		</div>
+	</a>
+
+	<a href="security.html">
+		<div class="security_overview">
+			<h2>Security</h2>
+			<h3 id="motionValue">Loading...</h3>
+		</div>
+	</a>
+	</div>
+</section>
+
+
+	<div class="buttom_nav">
+		<a class ="nav" href="overview.html" id="Home">
+			<img class="clip" src="assets/home.svg" alt=home>
+			<h3 id="active_tab">Overview</h3>
+		</a>
+		<a class="nav" href="timeline.html" id="Timeline">
+			<img id="timeIcon" class="clip" src="assets/timeline.svg" alt=timeline>
+			<h3>Timeline</h3>
+		</a>
+
+		<a class="nav" href="scenes.html" id="More">
+			<img id="sceneIcon" class="nav" id="more_image" src="assets/scenes.svg" alt=scenes>
+			<h3>Scenes</h3>
+		</a>
+	</div>
+	<script src="js/script.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>

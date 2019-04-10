@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> Umbra Security System</title>
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0, width=device-width">
+	<link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,700" rel="stylesheet">
+</head>
+<body id="body" class ="dark-mode"> 
+	<h2 id="overview">Security</h2>
+	<img id="min_logo" src="assets/logo.svg" alt=logo>
+	<div class="wrapper">
+	<input type="checkbox"  onclick="toggleDarkLight()" id="switch">
+	<label for="switch" class="switch-label">
+		<span class="toggle"></span>
+		</label>
+</div>
+	
+	<nav>
+  <div id="menuToggle">
+
+  	 <input type="checkbox" />
+  	 
+  	 <span></span>
+    <span></span>
+    <span></span>
+
+  	    <ul id="menu">
+    <li><a href="overview.html">Home</a></li>
+     <li> <a href="About.html">About</a></li>
+     <li> <a href="settings.html">Settings</a></li>
+      <li><a href="login2.html">Log Out</a></li>
+      
+    </ul>
+  </div>
+</nav>
+	
+	<div id="line"></div>
+
+<h2 id="j_set"> Jacob's Settings</h2>
+<h2 id="set_info"> Set everything the way you like it</h2>
+
+
+<div class="Settings" id="bluetooth">
+	<img src="assets/bluetooth.svg" alt=bluetooth>
+	<h2>Bluetooth</h2>
+	<button class="btn1">ON</button>
+</div>
+
+<div class="Settings" id="wifi">
+	<img src="assets/wifi.svg" alt=wifi>
+	<h2>wi-Fi</h2>
+	<button class="btn1">ON</button>
+</div>
+
+<div class="Settings" id="notification">
+	<img src="assets/Notification.svg" alt=Notification>
+	<h2>Notifications</h2>
+	<button class="btn2">OFF</button>
+</div>
+
+<div class="Settings" id="sound">
+	<img src="assets/sound.svg" alt=sound>
+ <h2>Sound</h2>
+	<button class="btn2">OFF</button>
+</div>
+
+<div class="Settings" id="theme">
+	<img src="assets/light-bulb.svg" alt=theme>
+ <h2>Light Theme</h2>
+	<button class="btn2">OFF</button>
+</div>
+
+
+<div class="buttom_nav">
+	<a class ="nav" href="overview.html" id="Home">
+	<img class="clip" src="assets/home_c.svg" alt=home>
+	<h3>Overview</h3>
+</a>
+<a class="nav" href="timeline.html" id="Timeline">
+	<img class="clip" src="assets/timeline.svg" alt=timeline>
+	<h3>Timeline</h3> 
+</a>
+<a class="nav" href="scenes.html" id="More">
+	<img class="nav" id="more_image" src="assets/scenes.svg" alt=scenes>
+	<h3>Scenes</h3>
+</a>
+	</div>
+	<script src="js/script.js"></script>
+
+</body>
+</html>
