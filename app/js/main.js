@@ -1,6 +1,11 @@
 var Readable = require('stream').Readable  
 var util = require('util')  
 var five = require('johnny-five')
+var twilio = require('twilio'); 
+ 
+var accountSid = 'ACdf24a9fcaf53cdd9ce12b72e02cc398d'; // Your Account SID from www.twilio.com/console
+var authToken = 'c0aefec563b59bf563c0058f6dfccb55';   // Your Auth Token from www.twilio.com/console
+var client = new twilio(accountSid, authToken);
 
 util.inherits(MyStream, Readable)  
 function MyStream(opt) {  
@@ -20,17 +25,19 @@ process.__defineGetter__('stdin', function() {
 
 //Bluetooth Board
 //Run this command in terminal to get the serial port: 'ls -l /dev/tty.*'
-var board = new five.Board(
-//{
-	//port: "/dev/tty.Umbra_SS_V01-DevB"
-//}
-);
+var board = new five.Board({
+  port: "/dev/tty.Umbra_SS_V01-DevB"
+});
 
 var tempDiv = document.querySelector("#tempValue");
-var lightDiv = document.querySelector("#lightValue");
 var gasDiv = document.querySelector("#gasValue");
+var lightDiv = document.querySelector("#lightValue");
 var motionDiv = document.querySelector("#motionValue");
-var soundDiv = document.querySelector("#soundValue");
+
+var tempLabel = document.querySelector("#tempLabel");
+var gasLabel = document.querySelector("#gasLabel");
+var lightLabel = document.querySelector("#lightLabel");
+var motionLabel = document.querySelector("#motionLabel");
 
 //Remaper Function
 function createRemap(inMin, inMax, outMin, outMax) { 
@@ -40,11 +47,10 @@ function createRemap(inMin, inMax, outMin, outMax) {
 }
 
 board.on("ready", function() {
-	tempDiv.innerHTML = "temp";
-	lightDiv.innerHTML = "light";
-	gasDiv.innerHTML = "gas";
-	motionDiv.innerHTML = "motion";
-	soundDiv.innerHTML = "sound";
+	tempDiv.innerHTML = "...";
+	lightDiv.innerHTML = "...";
+	gasDiv.innerHTML = "...";
+	motionDiv.innerHTML = "...";
 
 /*TEMPERATURE*/
 	var temperature = new five.Thermometer({
@@ -54,7 +60,14 @@ board.on("ready", function() {
   	});
 
   	temperature.on("change", function() {
-    	tempDiv.innerHTML = this.celsius + "°"; 
+    	tempDiv.innerHTML = this.celsius + " C"; 
+      if (this.celsius > 15) {
+        tempLabel.innerHTML = "The living room is at the perfect temperature!";
+      } else if (this.celsius > 35) {
+        tempLabel.innerHTML = "The living room is too warm right now.";
+      } else {
+        tempLabel.innerHTML = "The living room is a bit chilly right now."
+      }
   	});
 
 /*LIGHT*/
@@ -63,30 +76,44 @@ board.on("ready", function() {
     	freq: 500
 	});
     
-    photoresistor.on("change", function() {
-    	var sensorInfo = this.value;
-    	var remap = createRemap(0, 1023, 100, 0);
-      	lightDiv.innerHTML = remap(sensorInfo) + "<span> lm</span>";
-    });
+  photoresistor.on("change", function() {
+   	var sensorInfo = this.value;
+   	var remap = createRemap(0, 1023, 100, 0);
+   	lightDiv.innerHTML = remap(sensorInfo) + "<span> lm</span>";
+    if (remap(sensorInfo) > 80) {
+      lightLabel.innerHTML = "The lights seem to be ON.";
+    } else {
+      lightLabel.innerHTML = "The lights seem to be OFF.";
+    }
+  });
 
-/*MOTION*/
-  	var motion = new five.Motion(7);
+  /*MOTION*/
+  var motion = new five.Motion(7);
 
 	// "calibrated" occurs once, at the beginning of a session,
 	motion.on("calibrated", function() {
-		motionDiv.innerHTML = "Calibrated";
+		motionDiv.innerHTML = "ON";
+    motionLabel.innerHTML = "Motion detection, ON.";
 	});
 
 	// "motionstart" events are fired when the "calibrated"
 	// proximal area is disrupted, generally by some form of movement
 	motion.on("motionstart", function() {
-		motionDiv.innerHTML = "Motion Detected!";
+		motionDiv.innerHTML = "ON";
+    motionLabel.innerHTML = "MOTION DETECTED!";
+    client.messages.create({
+    body: 'Motion detected near front door.',
+    to: '+15196575853',  // Juliana's #
+    from: '+12262125001' // From a Juliana's valid Twilio number
+})
+.then((message) => console.log(message.sid));
 	});
 
 	// "motionend" events are fired following a "motionstart" event
 	// when no movement has occurred in X ms
 	motion.on("motionend", function() {
-		motionDiv.innerHTML = "Motion Ended";
+		motionDiv.innerHTML = "ON";
+    motionLabel.innerHTML = "Motion detection, ON.";
 	});
 
 /*GAS*/
@@ -97,50 +124,31 @@ board.on("ready", function() {
 
 	gas.on("change", function() {
 		var gasInfo = this.scaleTo(1, 10);
-		gasDiv.innerHTML = gasInfo + "<span> ppm </span>";
 
 		var piezo = new five.Piezo(10);
 		if (gasInfo > 4) {
-			piezo.play({
-    				song: [
-							["C4", 1 / 4],
-   							["D4", 1 / 4],
-   							["F4", 1 / 4],
-   							["D4", 1 / 4],
-   							["A4", 1 / 4],
-   							[null, 1 / 4],
-   							["A4", 1],
-   							["G4", 1],
-   							[null, 1 / 2],
-   							["C4", 1 / 4],
-   							["D4", 1 / 4],
-   							["F4", 1 / 4],
-   							["D4", 1 / 4],
-   							["G4", 1 / 4],
-   							[null, 1 / 4],
-   							["G4", 1],
-   							["F4", 1],
-   							[null, 1 / 2]
-    					],
-    						tempo: 100
-  					});
-		}
-	});
-
-/*MICROPHONE*/
-  var mic = new five.Sensor({
-  	pin: "A2",
-  	freq: 100
+      gasDiv.innerHTML = "DANGER";
+			gasLabel.innerHTML = "HIGH CO2 LEVEL DETECTED";
+		} else {
+      gasDiv.innerHTML = "OK";
+      gasLabel.innerHTML = "Detected gas levels are okay."
+    }
   });
-  var led = new five.Led(12);
 
-  mic.on("data", function() {
-  	var micInfo = this.scaleTo(1, 10);
-  	console.log(micInfo);
-    soundDiv.innerHTML = micInfo;
-    if (micInfo >> 4){
-    soundDiv.innerHTML = "Noise Detected!"}
-    //led.blink(500);}
+  /*MICROPHONE*/
+  // var mic = new five.Sensor({
+  // 	pin: "A2",
+  // 	freq: 100
+  // });
+  // var led = new five.Led(12);
 
-  });
+  // mic.on("data", function() {
+  // 	var micInfo = this.scaleTo(1, 10);
+  // 	console.log(micInfo);
+  //   soundDiv.innerHTML = micInfo;
+  //   if (micInfo >> 4){
+  //   soundDiv.innerHTML = "Noise Detected!"}
+  //   //led.blink(500);}
+
+  // });
   });

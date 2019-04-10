@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="30.25" viewBox="0 0 22 30.25">
+  <g id="ic_speaker_group_24px" transform="translate(-4 -1)">
+    <path id="Path_87" data-name="Path 87" d="M22.025,1H10.475A2.482,2.482,0,0,0,8,3.475v19.8a2.471,2.471,0,0,0,2.475,2.461l11.55.014A2.482,2.482,0,0,0,24.5,23.275V3.475A2.482,2.482,0,0,0,22.025,1ZM16.25,3.75A2.75,2.75,0,1,1,13.5,6.5,2.749,2.749,0,0,1,16.25,3.75Zm0,18.563a5.5,5.5,0,1,1,5.5-5.5A5.5,5.5,0,0,1,16.25,22.313Z" transform="translate(1.5)" fill="#9ecbaa"/>
+    <circle id="Ellipse_13" data-name="Ellipse 13" cx="3.438" cy="3.438" r="3.438" transform="translate(14.313 13.375)" fill="#9ecbaa"/>
+    <path id="Path_88" data-name="Path 88" d="M6.75,5H4V27a2.749,2.749,0,0,0,2.75,2.75H20.5V27H6.75Z" transform="translate(0 1.5)" fill="#9ecbaa"/>
+  </g>
+</svg>
