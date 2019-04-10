@@ -525,13 +525,13 @@ input {
 .clock {
   margin-top: 1px;
   margin-bottom: -2px;
-  margin-left: -150px; }
+  margin-left: -300px; }
 
 .s_line {
   height: 50%;
   margin-top: -47.5px;
   margin-bottom: -2px;
-  margin-left: -110px; }
+  margin-left: -230px; }
 
 .timeline_notification h2 {
   font-size: 12px;
@@ -586,20 +586,20 @@ input {
 #notification h2 {
   margin-left: 95px;
   margin-top: 10px;
-  margin-right: 15px; }
+  margin-right: 12px; }
 
 #sound h2 {
   margin-left: 115px;
   margin-top: 10px;
-  margin-right: 49px; }
+  margin-right: 52px; }
 
 #theme h2 {
   margin-left: 95px;
   margin-top: 10px;
-  margin-right: 22px; }
+  margin-right: 23px; }
 
 .btn1 {
-  width: 27px;
+  width: 30px;
   height: 25px;
   font-family: 'EB Garamond', serif;
   font-size: 17px;
@@ -614,7 +614,7 @@ input {
   margin-left: 50px; }
 
 .btn2 {
-  width: 26px;
+  width: 30px;
   height: 25px;
   font-family: 'EB Garamond', serif;
   font-size: 17px;

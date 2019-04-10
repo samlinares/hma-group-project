@@ -1,7 +1,7 @@
 # Umbra Home Monitoring System
-Back-end and front-end working together and transfering data over bluetooth.
+Everything working as intended over bluetooth.
 
-`V0.5`
+`V0.9`
 
 `Sensors Working:`
 * Temperature
@@ -16,3 +16,4 @@ Back-end and front-end working together and transfering data over bluetooth.
 
 `Sensors:`
 * Microphone
+
